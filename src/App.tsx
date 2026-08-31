@@ -18,7 +18,7 @@ import { ErrorState } from "./components/ErrorState";
 import { Card, CardHeader } from "./components/ui/Card";
 import { DashboardSkeleton } from "./components/ui/Skeleton";
 
-const DEFAULT_LOCATION = "faisalabad";
+const DEFAULT_LOCATION = "arizona";
 
 export default function App() {
   const [locationId, setLocationId] = useState(DEFAULT_LOCATION);
