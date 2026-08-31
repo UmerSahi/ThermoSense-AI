@@ -1,26 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Fira+Sans:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
-/* THESE ARE PLACEHOLDER FOR EMPTY APP, FEEL FREE TO REPLACE WITH DESIRED DESIGN */
-
 @theme {
-  --font-sans: ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --color-text-muted: oklch(0.9015 0.0154 241.79);
+  --font-sans: "Fira Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-heading: "Fira Code", ui-monospace, SFMono-Regular, monospace;
+
+  --color-background: oklch(0.985 0.003 247);
+  --color-surface: oklch(1 0 0);
+  --color-foreground: oklch(0.22 0.03 255);
+  --color-muted: oklch(0.945 0.008 250);
+  --color-muted-foreground: oklch(0.47 0.02 255);
+  --color-border: oklch(0.905 0.008 250);
+  --color-primary: oklch(0.55 0.15 256);
+  --color-primary-foreground: oklch(1 0 0);
+  --color-secondary: oklch(0.93 0.02 256);
+  --color-secondary-foreground: oklch(0.35 0.06 256);
+  --color-accent: oklch(0.72 0.16 50);
+  --color-accent-foreground: oklch(0.28 0.06 45);
+  --color-destructive: oklch(0.6 0.21 25);
+  --color-ring: oklch(0.55 0.15 256);
+
+  --color-heat-low: oklch(0.65 0.15 155);
+  --color-heat-moderate: oklch(0.72 0.15 80);
+  --color-heat-high: oklch(0.7 0.17 48);
+  --color-heat-extreme: oklch(0.56 0.22 30);
+
+  --color-success: oklch(0.6 0.16 155);
+  --color-warning: oklch(0.72 0.15 80);
+
+  --shadow-card: 0 1px 2px rgb(15 23 42 / 0.04), 0 10px 28px -14px rgb(15 23 42 / 0.14);
+  --shadow-popover: 0 12px 40px -12px rgb(15 23 42 / 0.25);
+
+  --animate-pulse-soft: pulse-soft 2s ease-in-out infinite;
+  --animate-fade-up: fade-up 0.5s ease-out both;
 }
 
-.bg-dotgrid-glow {
-  background-color: oklch(0.1638 0 0);
-  background-image:
-    radial-gradient(
-      circle at 50% 118%,
-      oklch(0.41 0.14 250 / 45%) 0%,
-      oklch(0.41 0.14 250 / 22%) 22%,
-      oklch(0.41 0.14 250 / 10%) 32%,
-      oklch(0.41 0.14 250 / 4%) 38%,
-      transparent 45%
-    ),
-    radial-gradient(oklch(0.41 0.14 250 / 4%) 1px, transparent 1px);
-  background-size:
-    100% 100%,
-    16px 16px;
-  background-position: center, center;
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
 }
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+  section[id],
+  [id="dashboard"] {
+    scroll-margin-top: 5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Subtle blue/orange glow used behind the hero */
+.bg-hero-glow {
+  background:
+    radial-gradient(60% 55% at 12% 0%, oklch(0.55 0.15 256 / 0.10), transparent 62%),
+    radial-gradient(52% 48% at 88% 8%, oklch(0.72 0.16 50 / 0.08), transparent 60%),
+    var(--color-background);
+}
+
+/* Skeleton shimmer */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-muted);
+}
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, oklch(1 0 0 / 0.65), transparent);
+  animation: skeleton-shimmer 1.6s ease-in-out infinite;
+}
+@keyframes skeleton-shimmer {
+  100% { transform: translateX(100%); }
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
