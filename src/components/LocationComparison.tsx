@@ -24,7 +24,7 @@ export function LocationComparison({ comparison, selectedId, hottest }: Props) {
       <CardHeader
         eyebrow="Location comparison"
         title="How hot is it elsewhere?"
-        description={`Live comparison across monitored cities. Hottest right now: ${hottest}.`}
+        description={`Live comparison across monitored US states. Hottest right now: ${hottest}.`}
         icon={<BarChart3 className="h-5 w-5" aria-hidden="true" />}
       />
 
@@ -84,7 +84,7 @@ export function LocationComparison({ comparison, selectedId, hottest }: Props) {
 
       <p className="mt-4 flex items-center gap-1.5 text-xs text-muted-foreground">
         <MapPin className="h-3.5 w-3.5 text-primary" aria-hidden="true" />
-        Showing your selected city plus the two hottest others. Switch location in the navbar to compare.
+        Showing your selected state plus the two hottest others. Switch location in the navbar to compare.
       </p>
     </Card>
   );

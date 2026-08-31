@@ -61,7 +61,7 @@ export function Hero({ status, location, current, heatRisk, series, onAnalyze }:
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
             </span>
-            Live sensor stream · {ready ? `${location!.name}, ${location!.country}` : "Faisalabad, Pakistan"}
+            Live sensor stream · {ready ? `${location!.name}, ${location!.country}` : "Arizona, United States"}
           </p>
         </div>
 
